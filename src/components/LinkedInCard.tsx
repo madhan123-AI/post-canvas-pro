@@ -6,6 +6,7 @@ interface LinkedInCardProps {
   authorName: string;
   jobTitle: string;
   content: string;
+  image?: string;
   timeAgo?: string;
 }
 
@@ -13,6 +14,7 @@ export const LinkedInCard = ({
   authorName, 
   jobTitle, 
   content, 
+  image,
   timeAgo = "1m" 
 }: LinkedInCardProps) => {
   const authorInitials = authorName
@@ -55,6 +57,17 @@ export const LinkedInCard = ({
         <div className="text-card-foreground text-sm leading-relaxed whitespace-pre-wrap">
           {content || "Start typing your LinkedIn post content here..."}
         </div>
+        
+        {/* Image */}
+        {image && (
+          <div className="mt-3">
+            <img
+              src={image}
+              alt="Post image"
+              className="w-full rounded-lg object-cover max-h-96"
+            />
+          </div>
+        )}
       </div>
 
       {/* Engagement bar */}
